@@ -7,7 +7,11 @@ const describe = (desc, fn) => {
   fn()
 }
 
-const it = (msg, fn) => describe('  ' + msg, fn)
+const it = (msg, fn) => {
+  console.log('  ' + msg)
+  console.log('this', fn.toString())
+  fn()
+}
 
 const matchers = (exp) => ({
   toBe: (ass) => {
@@ -16,23 +20,23 @@ const matchers = (exp) => ({
       return true
     } else {
       console.log('fail')
+      throw new Error(`Expected ${ass}, got ${exp}`)
       return false
     }
   }
 })
 
+const beforeEach = (cb) => {
+  cb()
+}
+
 const expect = (exp) => matchers(exp)
 
-describe('adder', () => {
-  it('adds two numbers', () => {
-    const result = adder(1, 2)
-    expect(result).toBe(3)
-  })
-})
 
 module.exports = {
   describe,
   expect,
   it,
-  matchers
+  matchers,
+  beforeEach
 }

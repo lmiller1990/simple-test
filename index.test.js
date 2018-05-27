@@ -36,8 +36,15 @@ describe('matchers', () => {
   })
 })
 */
+
+describe('checkForHook', () => {
+  it('returns the body of beforeEach', () => {
+  })
+})
+
+  /*
 describe('beforeEach', () => {
-  it('executes before each `it` block', () => {
+  it('executes before each it block', () => {
     let assiged = false
 
     beforeEach(() => {
@@ -54,4 +61,4 @@ describe('beforeEach', () => {
       expect(assiged).toBe(true)
     })
   })
-})
+})*/

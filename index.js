@@ -7,9 +7,19 @@ const describe = (desc, fn) => {
   fn()
 }
 
+function insertSemis(str) {
+  return str.replace(/(?:\r\n|\r|\n)/g, ';')
+}
+
+const checkForHook = (source) => {
+  const captureCb = /beforeEach([\s\S]*(?=\}\)))/.exec(source)
+  const beforeEachCb = captureCb ? captureCb[1] : null
+  return beforeEachCb
+}
+
 const it = (msg, fn) => {
   console.log('  ' + msg)
-  console.log('this', fn.toString())
+  fnBody = fn.toString()
   fn()
 }
 
@@ -38,5 +48,7 @@ module.exports = {
   expect,
   it,
   matchers,
-  beforeEach
+  beforeEach,
+  insertSemis,
+  checkForHook
 }

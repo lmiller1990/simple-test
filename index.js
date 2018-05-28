@@ -7,16 +7,18 @@ const describe = (desc, fn) => {
   fn()
 }
 
-const checkForHook = (source) => {
-  const captureCb = /beforeEach([\s\S]*(?=\}\)))/  
+const checkForHook = (hook, source) => {
+  // beforeEach([\s\S]*?\}\){1})
+  const captureCb = new RegExp(`${hook}([\\s\\S]*?\\}\\)\{1\})`)
   const match = captureCb.exec(source)
-  const beforeEachCb = match ? match[1] : null
-  return beforeEachCb
+  return match ? match[1] : null
 }
 
 const it = (msg, fn) => {
   console.log('  ' + msg)
   fnBody = fn.toString()
+  const hasBeforeEachHook = checkForHook("beforeEach", fnBody)
+  console.log("hook", hasBeforeEachHook)
   fn()
 }
 

@@ -8,7 +8,7 @@ const {
 
 let executes = 0
 const noop = () => { executes += 1 }
-  /*
+/*
 describe('describe', () => {
   it('returns a function', () => {
     const actual = describe('', noop)
@@ -36,13 +36,6 @@ describe('matchers', () => {
   })
 })
 */
-
-describe('checkForHook', () => {
-  it('returns the body of beforeEach', () => {
-  })
-})
-
-  /*
 describe('beforeEach', () => {
   it('executes before each it block', () => {
     let assiged = false
@@ -61,4 +54,4 @@ describe('beforeEach', () => {
       expect(assiged).toBe(true)
     })
   })
-})*/
+})

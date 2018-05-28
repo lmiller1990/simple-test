@@ -7,13 +7,10 @@ const describe = (desc, fn) => {
   fn()
 }
 
-function insertSemis(str) {
-  return str.replace(/(?:\r\n|\r|\n)/g, ';')
-}
-
 const checkForHook = (source) => {
-  const captureCb = /beforeEach([\s\S]*(?=\}\)))/.exec(source)
-  const beforeEachCb = captureCb ? captureCb[1] : null
+  const captureCb = /beforeEach([\s\S]*(?=\}\)))/  
+  const match = captureCb.exec(source)
+  const beforeEachCb = match ? match[1] : null
   return beforeEachCb
 }
 
@@ -29,7 +26,6 @@ const matchers = (exp) => ({
       console.log('pass')
       return true
     } else {
-      console.log('fail')
       throw new Error(`Expected ${ass}, got ${exp}`)
       return false
     }
@@ -49,6 +45,5 @@ module.exports = {
   it,
   matchers,
   beforeEach,
-  insertSemis,
   checkForHook
 }

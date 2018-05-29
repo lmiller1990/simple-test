@@ -1,21 +1,11 @@
 const {
-  checkForHook,
   describe,
   it,
   expect
 } = require("./index")
 
-  /*
-  it('executes before each it block', () => {
-    let assiged = false
+const {checkForHook} = require("./utils")
 
-    beforeEach(() => {
-      assiged = true  
-    })
-
-    it('executes', () => {
-      expect(assiged).toBe(true)
-    })*/
 describe('checkForHook', () => {
   it('returns body of beforeEach', () => {
     const str = 

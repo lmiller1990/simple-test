@@ -2,13 +2,12 @@ const {
   describe,
   it,
   expect,
-  matchers,
   beforeEach
-} = require('./index')
+} = require('./api')
 
 let executes = 0
 const noop = () => { executes += 1 }
-/*
+
 describe('describe', () => {
   it('returns a function', () => {
     const actual = describe('', noop)
@@ -26,16 +25,6 @@ describe('expect', () => {
   })
 })
 
-describe('matchers', () => {
-  describe('toBe', () => {
-    it('works', () => {
-      const actual = matchers('1').toBe('1')
-
-      expect(actual).toBe(true)
-    })
-  })
-})
-*/
 describe('beforeEach', () => {
   it('executes before each it block', () => {
     let assiged = false

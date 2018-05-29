@@ -7,7 +7,7 @@ const {
 
 let executes = 0
 const noop = () => { executes += 1 }
-
+  /*
 describe('describe', () => {
   it('returns a function', () => {
     const actual = describe('', noop)
@@ -23,24 +23,25 @@ describe('expect', () => {
     expect(typeof actual).toBe('object')
     expect(typeof actual.toBe).toBe('function')
   })
-})
+})*/
 
 describe('beforeEach', () => {
   it('executes before each it block', () => {
     let assiged = false
 
     beforeEach(() => {
-      assiged = true  
+      console.log("CalleD!")
+      // assiged = true  
     })
 
     it('executes', () => {
-      expect(assiged).toBe(true)
+      //expect(assiged).toBe(true)
     })
 
     assiged = false
 
     it('executes', () => {
-      expect(assiged).toBe(true)
+      //expect(assiged).toBe(true)
     })
   })
 })

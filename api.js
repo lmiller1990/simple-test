@@ -9,6 +9,10 @@ const describe = (desc, fn) => {
 const it = (msg, fn) => {
   fnBody = fn.toString()
   const hasBeforeEachHook = checkForHook("beforeEach", fnBody)
+  if (hasBeforeEachHook) {
+    const hook = new Function(hasBeforeEachHook) 
+    hook()
+  }
   fn()
 }
 
